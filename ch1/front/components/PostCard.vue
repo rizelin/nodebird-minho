@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card >
+    <v-card>
       <v-img />
       <v-card-text>
         <div>

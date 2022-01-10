@@ -11,7 +11,7 @@ export const mutations = {
 
 //비동기적 작업
 export const actions = {
-  signUp({commit}, payload) {
+  signUp({ commit, state }, payload){
     commit('setMe', payload);
   },
   logIn({commit}, payload) {

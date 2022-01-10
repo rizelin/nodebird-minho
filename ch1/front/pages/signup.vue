@@ -72,24 +72,35 @@ export default {
         v => v === this.password || '비밀번호가 일치하지 않습니다',
       ],
       termsRules: [
-        v => !!v || '약관 동의는 필수입니다.',
+        v => !!v || '약관에 동의해야 합니다',
       ],
     }
-  },
-  methods: {
-    onSubmitForm() {
-      if(this.$refs.form.validate()){
-        console.log("가입시도");
-      }else{
-        console.log("가입실패");
-      }
-    }  
   },
   head() {
     return {
       title: '회원가입',
     }
-  }
+  },
+  methods: {
+    onSubmitForm() {
+      if (this.$refs.form.validate()){
+        this.$store.dispatch('users/signUp', {
+            nickname: this.nickname,
+            email: this.email,
+        })
+        .then(()=> {
+          this.$router.push({
+            path: '/',
+          });
+        })
+        .catch(() => {
+          alert('회원가입 실패');
+        });
+        
+      }
+    }  
+  },
+
 }
 </script>
 

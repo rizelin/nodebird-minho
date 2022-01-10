@@ -12,8 +12,10 @@
   ],
   "plugins": [],
   "rules": {
+    "vue/mustache-interpolation-spacing":"off",
     "vue/max-attributes-per-line": "off",
     "vue/singleline-html-element-content-newline": "off",
-    "vue/multi-word-component-names": ["error", {"ignores": []}]
+    "vue/multi-word-component-names": "off",
+    "vue/html-indent":"off"
   }
 }

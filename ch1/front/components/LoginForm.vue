@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="!me">
     <v-card>
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-container>
@@ -23,6 +23,12 @@
       </v-form>
     </v-card>
   </v-container>
+  <v-container v-else>
+    <v-card>
+      {{ me.nickname }}님 로그인 되었습니다.
+      <v-btn @click="onLogOut">로그아웃</v-btn>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -41,14 +47,24 @@ export default {
       ],
     }
   },
+  computed: {
+    me() {
+        return this.$store.state.users.me;
+      },
+  },
   methods: {
     onSubmitForm() {
-     if(this.$refs.form.validate()){
-       console.log('로그인시도');
-     }else{
-       console.log('실패');
-     }
-    }
+      if(this.$refs.form.validate()) {
+        this.$store.dispatch('users/logIn', {
+          email: this.email,
+          nickname: '제로초',
+          password: this.password
+        })
+      };
+    },
+    onLogOut() {
+      this.$store.dispatch('users/logOut');
+    },
   }
 }
 </script>

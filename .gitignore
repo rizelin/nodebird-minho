@@ -1,0 +1,4 @@
+
+# 폴더무시
+ch1/front/node_modules/
+ch1/front/.nuxt/

@@ -5,5 +5,8 @@ export const state = () => ({
 export const mutations = {
   bye(state) {
     state.hello = 'goodbye';
-  }
+  },
+  addMainPost() {
+
+  },
 };

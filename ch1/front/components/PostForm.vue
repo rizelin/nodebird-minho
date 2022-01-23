@@ -11,7 +11,7 @@
           :hide-details="hideDetails"
           :success-messages="successMessages"
           :success="success"
-          :rules="[v => !!v.trim() || '내용을 입력하세요.']"
+          :rules="contentRules"
           @input="onChangeTextarea"
         />
         <v-btn type="submit" color="green" absolute right>확인</v-btn>
@@ -33,6 +33,9 @@ export default {
       successMessages: '',
       success: false,
       content: '',
+      contentRules: [
+        v => !!v.trim|| '내용을 입력하세요'
+      ]
     }
   },
   computed: {
